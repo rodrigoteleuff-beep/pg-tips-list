@@ -11,7 +11,7 @@ td input{display:block;width:100%!important;min-width:0!important;font-size:16px
 td input.clock24{font-variant-numeric:tabular-nums;letter-spacing:-.5px;text-align:center;font-size:14px!important;padding:8px 1px!important}
 td button{font-size:16px;padding:8px 0!important;min-height:38px}
 @media(max-width:390px){body{padding:6px!important}.card{padding:8px!important}th,td{padding:6px 1px!important}td input.clock24{font-size:13px!important}td input{font-size:14px!important}}
-</style></head><body><main><h1>PG Tips List</h1><p>Kitchen first · Front of House second · 24-hour time · v4.2</p><div class="card"><label for="day">Workday</label><select id="day"></select><p class="hint">Upload both weekly schedule photos. AI generates a preview for your review before replacing the seven daily lists. Photo reading requires the secure server connection below.</p><p class="hint">AI photo reader connected: pg-tips-ai. The schedule will be reviewed before saving.</p><input id="apiUrl" type="hidden" value="https://pg-tips-ai.rodrigo-teleuff.workers.dev"><div class="row"><div><label for="kphoto">Kitchen schedule photo</label><input id="kphoto" type="file" accept="image/png,image/jpeg,image/webp"><div class="photo-actions"><span class="photo-name" id="kphotoName">No photo selected</span><button type="button" class="secondary" id="kreplace">Replace</button><button type="button" class="danger" id="kdelete">Delete</button></div></div><div><label for="fphoto">Front of House photo</label><input id="fphoto" type="file" accept="image/png,image/jpeg,image/webp"><div class="photo-actions"><span class="photo-name" id="fphotoName">No photo selected</span><button type="button" class="secondary" id="freplace">Replace</button><button type="button" class="danger" id="fdelete">Delete</button></div></div></div><button id="scan" type="button">Generate Weekly Schedule</button><p id="scanStatus" role="status"></p><div id="review" hidden><h2>Review imported shifts</h2><p id="reviewSummary"></p><div id="reviewWarnings" class="hint"></div><button id="apply" type="button">Confirm &amp; save 7 days</button><button id="cancel" class="secondary" type="button">Cancel</button></div></div><div class="card"><h2>Kitchen</h2><div class="tablewrap"><table><thead><tr><th>Employee</th><th>IN</th><th>OUT</th><th></th></tr></thead><tbody id="kitchen"></tbody></table></div><button class="secondary" data-add="Kitchen">+ Add kitchen employee</button></div><div class="card"><h2>Front of House</h2><div class="tablewrap"><table><thead><tr><th>Employee</th><th>IN</th><th>OUT</th><th></th></tr></thead><tbody id="front"></tbody></table></div><button class="secondary" data-add="Front of House">+ Add front employee</button></div><div class="card"><h2>Daily tips</h2><div class="row"><div><label for="cashTips">Cash Tips ($)</label><input id="cashTips" type="number" min="0" step="0.01" inputmode="decimal" value="0.00" style="width:100%"></div><div><label for="cardTips">Card Tips ($)</label><input id="cardTips" type="number" min="0" step="0.01" inputmode="decimal" value="0.00" style="width:100%"></div></div><p><strong>Total Tips: <span id="totalTips">$0.00</span></strong></p><small>Tips are saved separately for each day and retained in this browser for 7 days after the last edit. This is device-only storage, not cloud backup.</small></div><div class="card"><button id="copy">Copy daily list</button><button id="download" class="secondary">Download CSV</button><button id="reset" class="danger">Reset selected day</button><p id="status" role="status"></p><small>Shift edits are saved in this browser. Tips amounts are retained for 7 days after the last edit. Check the imported schedule and adjust actual clock-in/out times before copying.</small></div></main><script>
+</style></head><body><main><h1>PG Tips List</h1><p>Kitchen first · Front of House second · 24-hour time · v4.3</p><div class="card"><label for="day">Workday</label><select id="day"></select><p class="hint">Upload both weekly schedule photos. AI generates a preview for your review before replacing the seven daily lists. Photo reading requires the secure server connection below.</p><p class="hint">AI photo reader connected: pg-tips-ai. The schedule will be reviewed before saving.</p><input id="apiUrl" type="hidden" value="https://pg-tips-ai.rodrigo-teleuff.workers.dev"><div class="row"><div><label for="kphoto">Kitchen schedule photo</label><input id="kphoto" type="file" accept="image/png,image/jpeg,image/webp"><div class="photo-actions"><span class="photo-name" id="kphotoName">No photo selected</span><button type="button" class="secondary" id="kreplace">Replace</button><button type="button" class="danger" id="kdelete">Delete</button></div></div><div><label for="fphoto">Front of House photo</label><input id="fphoto" type="file" accept="image/png,image/jpeg,image/webp"><div class="photo-actions"><span class="photo-name" id="fphotoName">No photo selected</span><button type="button" class="secondary" id="freplace">Replace</button><button type="button" class="danger" id="fdelete">Delete</button></div></div></div><button id="scan" type="button">Generate Weekly Schedule</button><p id="scanStatus" role="status"></p><div id="review" hidden><h2>Review imported shifts</h2><p id="reviewSummary"></p><div id="reviewWarnings" class="hint"></div><div id="reviewDetails" style="max-height:350px;overflow:auto;margin:12px 0"></div><button id="apply" type="button">Confirm &amp; save 7 days</button><button id="cancel" class="secondary" type="button">Cancel</button></div></div><div class="card"><h2>Kitchen</h2><div class="tablewrap"><table><thead><tr><th>Employee</th><th>IN</th><th>OUT</th><th></th></tr></thead><tbody id="kitchen"></tbody></table></div><button class="secondary" data-add="Kitchen">+ Add kitchen employee</button></div><div class="card"><h2>Front of House</h2><div class="tablewrap"><table><thead><tr><th>Employee</th><th>IN</th><th>OUT</th><th></th></tr></thead><tbody id="front"></tbody></table></div><button class="secondary" data-add="Front of House">+ Add front employee</button></div><div class="card"><h2>Daily tips</h2><div class="row"><div><label for="cashTips">Cash Tips ($)</label><input id="cashTips" type="number" min="0" step="0.01" inputmode="decimal" value="0.00" style="width:100%"></div><div><label for="cardTips">Card Tips ($)</label><input id="cardTips" type="number" min="0" step="0.01" inputmode="decimal" value="0.00" style="width:100%"></div></div><p><strong>Total Tips: <span id="totalTips">$0.00</span></strong></p><small>Tips are saved separately for each day and retained in this browser for 7 days after the last edit. This is device-only storage, not cloud backup.</small></div><div class="card"><button id="copy">Copy daily list</button><button id="download" class="secondary">Download CSV</button><button id="reset" class="danger">Reset selected day</button><p id="status" role="status"></p><small>Shift edits are saved in this browser. Tips amounts are retained for 7 days after the last edit. Check the imported schedule and adjust actual clock-in/out times before copying.</small></div></main><script>
 // Secure image reader: no API key is stored in this page.
 let pendingImport=null;
 const scanButton=document.getElementById('scan'),scanStatus=document.getElementById('scanStatus');
@@ -19,8 +19,71 @@ const apiUrl=document.getElementById('apiUrl');apiUrl.value='https://pg-tips-ai.
 
 for(const [prefix,inputId] of [['k','kphoto'],['f','fphoto']]){const input=document.getElementById(inputId),label=document.getElementById(prefix+'photoName'),remove=document.getElementById(prefix+'delete');document.getElementById(prefix+'replace').addEventListener('click',()=>input.click());input.addEventListener('change',()=>{label.textContent=input.files[0]?.name||'No photo selected';pendingImport=null;document.getElementById('review').hidden=true;scanStatus.textContent='';});remove.addEventListener('click',()=>{input.value='';label.textContent='No photo selected';pendingImport=null;document.getElementById('review').hidden=true;scanStatus.textContent='Photo removed. Choose a replacement before generating.';});}
 function readImage(file){return new Promise((resolve,reject)=>{if(!file||!/^image\/(jpeg|png|webp)$/.test(file.type)||file.size>6e6){reject(Error('Use a JPG, PNG or WebP photo under 6 MB.'));return}const reader=new FileReader();reader.onload=()=>resolve(reader.result);reader.onerror=()=>reject(Error('Could not open photo'));reader.readAsDataURL(file)})}
-function validateImport(obj){if(!Array.isArray(obj.days)||obj.days.length!==7)throw Error('Expected seven days.');return obj.days.map((day,i)=>{let out={};for(const dept of ['Kitchen','Front of House']){if(!Array.isArray(day[dept])||day[dept].length>60)throw Error('Invalid '+dept+' schedule on day '+(i+1));out[dept]=day[dept].map(row=>{if(!Array.isArray(row)||row.length!==3||typeof row[0]!=='string'||row[0].length>80||!row[0].trim()||!row.slice(1).every(t=>typeof t==='string'&&/^([01]\d|2[0-3]):[0-5]\d$/.test(t)))throw Error('Invalid employee or time on day '+(i+1));return row.map(v=>v.trim())})}return out})}
-scanButton.addEventListener('click',async()=>{const k=document.getElementById('kphoto').files[0],f=document.getElementById('fphoto').files[0],url=apiUrl.value.trim().replace(/\/$/,'');if(!k||!f){scanStatus.textContent='Choose both photos first.';return}if(!/^https:\/\//.test(url)){scanStatus.textContent='Enter your secure photo reader URL first.';return}scanButton.disabled=true;scanStatus.textContent='Reading both schedules with AI…';document.getElementById('review').hidden=true;try{const [kitchen,front]=await Promise.all([readImage(k),readImage(f)]);const response=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({kitchen,front})});const json=await response.json();if(!response.ok)throw Error(json.error||'Server error');pendingImport=validateImport(json);const total=pendingImport.reduce((n,d)=>n+d.Kitchen.length+d['Front of House'].length,0);document.getElementById('reviewSummary').textContent='Detected '+total+' shifts across 7 days. Review each day after saving; AI may misread small text.';document.getElementById('reviewWarnings').textContent=(json.warnings||[]).join(' • ')||'No warnings returned. Check the photos against the imported shifts.';document.getElementById('review').hidden=false;scanStatus.textContent='Preview ready. Confirm only if you want to replace all seven schedules.'}catch(e){scanStatus.textContent='Import failed: '+e.message+' — Check the photos and try again.'}finally{scanButton.disabled=false}});
+function normalizeTime(value,department,dayIndex){
+  let s=String(value??'').trim().toUpperCase().replace(/\s+/g,' ');
+  if(/^(CLOSE|CLOSING|CL)$/.test(s))return department==='Kitchen'?(dayIndex===6?'20:00':'21:00'):(dayIndex===6?'20:30':'21:30');
+  s=s.replace(/\./g,':');
+  let m=s.match(/^(\d{1,2})(?::(\d{1,2}))?(?::00)?\s*(AM|PM)?$/);
+  if(!m)return null;
+  let h=Number(m[1]),min=m[2]===undefined?0:Number(m[2]);
+  if(min>59)return null;
+  if(m[3]){if(h<1||h>12)return null;h=h%12+(m[3]==='PM'?12:0)}
+  if(h>23)return null;
+  return String(h).padStart(2,'0')+':'+String(min).padStart(2,'0');
+}
+function baseEmployeeName(name){return name.replace(/\s*\((?:CLEAN|CLEANING|GRILL|OPEN|CLOSE|CLOSING)\)\s*$/i,'').trim().replace(/\s+/g,' ')}
+function consolidateConsecutive(rows){
+  const groups=new Map();
+  for(const row of rows){const name=baseEmployeeName(row[0]);const key=name.toLocaleUpperCase();if(!groups.has(key))groups.set(key,[]);groups.get(key).push([name,row[1],row[2]])}
+  const result=[];
+  for(const entries of groups.values()){
+    entries.sort((a,b)=>a[1].localeCompare(b[1]));
+    for(const entry of entries){
+      const last=result.find(r=>r._key===entries[0][0].toLocaleUpperCase()&&r[2]===entry[1]);
+      if(last){last[2]=entry[2]}else{const next=[...entry];next._key=entries[0][0].toLocaleUpperCase();result.push(next)}
+    }
+  }
+  return result.map(r=>r.slice(0,3)).sort((a,b)=>a[1].localeCompare(b[1]));
+}
+function validateImport(obj){
+  if(!Array.isArray(obj.days)||obj.days.length!==7)throw Error('Expected seven days.');
+  const warnings=Array.isArray(obj.warnings)?obj.warnings.slice():[];
+  const days=obj.days.map((day,i)=>{
+    const out={};
+    for(const dept of ['Kitchen','Front of House']){
+      if(!Array.isArray(day[dept])||day[dept].length>60)throw Error('Invalid '+dept+' schedule on day '+(i+1));
+      const rows=[];
+      day[dept].forEach((row,j)=>{
+        const name=Array.isArray(row)?row[0]:row?.name;
+        const start=Array.isArray(row)?row[1]:(row?.start??row?.in);
+        const end=Array.isArray(row)?row[2]:(row?.end??row?.out);
+        const normalizedName=typeof name==='string'?name.trim():'';
+        const startTime=normalizeTime(start,dept,i),endTime=normalizeTime(end,dept,i);
+        if(!normalizedName||normalizedName.length>80||!startTime||!endTime||endTime<=startTime){
+          warnings.push('Day '+(i+1)+' '+dept+', row '+(j+1)+': could not read '+JSON.stringify(row).slice(0,160));
+          return;
+        }
+        rows.push([normalizedName,startTime,endTime]);
+      });
+      out[dept]=consolidateConsecutive(rows);
+    }
+    return out;
+  });
+  return {days,warnings};
+}
+function renderImportPreview(days){
+  const holder=document.getElementById('reviewDetails');holder.replaceChildren();
+  days.forEach((d,i)=>{
+    const section=document.createElement('details');section.open=i===0;
+    const heading=document.createElement('summary');heading.textContent=window.days?.[i]||['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'][i];heading.style.cssText='font-weight:700;padding:8px 0;cursor:pointer';section.append(heading);
+    for(const dept of ['Kitchen','Front of House']){
+      const h=document.createElement('div');h.textContent=dept;h.style.cssText='font-weight:600;margin:5px 0';section.append(h);
+      const lines=document.createElement('div');lines.style.cssText='font-size:13px;white-space:pre-line';lines.textContent=d[dept].map(r=>r[0]+'  '+r[1]+'–'+r[2]).join('\n')||'No shifts';section.append(lines);
+    }
+    holder.append(section);
+  });
+}
+scanButton.addEventListener('click',async()=>{const k=document.getElementById('kphoto').files[0],f=document.getElementById('fphoto').files[0],url=apiUrl.value.trim().replace(/\/$/,'');if(!k||!f){scanStatus.textContent='Choose both photos first.';return}if(!/^https:\/\//.test(url)){scanStatus.textContent='Enter your secure photo reader URL first.';return}scanButton.disabled=true;scanStatus.textContent='Reading both schedules with AI…';document.getElementById('review').hidden=true;try{const [kitchen,front]=await Promise.all([readImage(k),readImage(f)]);const response=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({kitchen,front})});const json=await response.json();if(!response.ok)throw Error(json.error||'Server error');const checked=validateImport(json);pendingImport=checked.days;renderImportPreview(pendingImport);const total=pendingImport.reduce((n,d)=>n+d.Kitchen.length+d['Front of House'].length,0);document.getElementById('reviewSummary').textContent='Detected '+total+' shifts across 7 days. Expand each day below and check all shifts before saving.';document.getElementById('reviewWarnings').textContent=checked.warnings.join(' • ')||'No warnings returned. Check the photos against the imported shifts.';document.getElementById('review').hidden=false;scanStatus.textContent='Preview ready. Review the seven days before confirming.'}catch(e){scanStatus.textContent='Import failed: '+e.message}finally{scanButton.disabled=false}});
 document.getElementById('apply').addEventListener('click',()=>{if(!pendingImport||!confirm('Replace all seven saved daily employee lists? Cash/Card Tips will be kept.'))return;pendingImport.forEach((v,i)=>localStorage.setItem('pg-tips-2026-10-19-'+i,JSON.stringify(v)));pendingImport=null;document.getElementById('review').hidden=true;load();scanStatus.textContent='Seven daily lists saved. Review names and hours before using them.'});
 document.getElementById('cancel').addEventListener('click',()=>{pendingImport=null;document.getElementById('review').hidden=true;scanStatus.textContent='Import canceled.'});
 const namesK=['HUGO','JESUS','LEONEL','REYNALDO','JOSUE','LUIS R.','KENNEDY','YOLANDA','ANGEL','JESUS (PM)','DAVID','JUAN'];
